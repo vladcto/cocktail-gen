@@ -22,7 +22,7 @@ class MainPage extends ConsumerWidget {
       bottomNavigationBar: DecoratedBox(
         decoration: const BoxDecoration(
           boxShadow: [
-            AppShadows.bottomToTop,
+            AppShadows.bottomTop,
           ],
         ),
         child: SalomonBottomBar(
@@ -47,6 +47,12 @@ class MainPage extends ConsumerWidget {
             ),
           ],
           onTap: (i) => ref.read(_selectedProvider.notifier).state = i,
+        ),
+      ),
+      appBar: AppBar(
+        title: const Center(
+          // TODO: Изменить текст.
+          child: Text("Some text"),
         ),
       ),
     );
