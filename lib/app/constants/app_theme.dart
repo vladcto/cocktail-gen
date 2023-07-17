@@ -4,6 +4,7 @@ sealed class AppTheme {
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+    primaryColor: const Color.fromRGBO(186, 195, 255, 1),
     colorScheme: const ColorScheme.dark(
       // Primary.
       primary: Color.fromRGBO(186, 195, 255, 1),
