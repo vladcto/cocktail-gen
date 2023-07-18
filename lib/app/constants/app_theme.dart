@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 sealed class AppTheme {
+  // TODO: Убрать повторения цветов.
   static ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+    primaryColor: const Color.fromRGBO(186, 195, 255, 1),
     colorScheme: const ColorScheme.dark(
       // Primary.
       primary: Color.fromRGBO(186, 195, 255, 1),
@@ -21,6 +23,11 @@ sealed class AppTheme {
       onSurface: Color.fromRGBO(228, 225, 230, 1),
       surfaceVariant: Color.fromRGBO(35, 36, 42, 1),
       onSurfaceVariant: Color.fromRGBO(199, 197, 208, 1),
+    ),
+    appBarTheme: const AppBarTheme(
+      shadowColor: Colors.black,
+      elevation: 8,
+      surfaceTintColor: Color.fromRGBO(27, 27, 31, 1),
     ),
   );
 }

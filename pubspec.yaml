@@ -9,11 +9,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  salomon_bottom_bar: ^3.3.2
+  material_design_icons_flutter: ^7.0.7296
+  riverpod: ^2.3.6
+  flutter_riverpod: ^2.3.6
+  auto_route: ^7.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  auto_route_generator: ^7.0.0
+  build_runner: ^2.4.6
 
 flutter:
   uses-material-design: true
