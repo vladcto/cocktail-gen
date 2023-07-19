@@ -1,4 +1,6 @@
 import 'package:auto_route/annotations.dart';
+import 'package:cocktail_gen/app/widgets/ingredient_tile.dart';
+import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -7,13 +9,14 @@ class IngredientsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: const Placeholder(
-        color: Colors.green,
-      ),
+    return ListView(
+      children: [
+        for (final ingredient in MockIngredient.data)
+          SizedBox(
+            height: 96,
+            child: IngredientTile(ingredient: ingredient),
+          ),
+      ],
     );
   }
 }
