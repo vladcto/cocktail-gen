@@ -1,4 +1,6 @@
 import 'package:auto_route/annotations.dart';
+import 'package:cocktail_gen/app/widgets/cocktail_card.dart';
+import 'package:cocktail_gen/data/repos/mock_cocktail.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -7,13 +9,18 @@ class CocktailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: const Placeholder(
-        color: Colors.orange,
-      ),
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: [
+        for (final cocktail in MockCocktail.data)
+          SizedBox(
+            height: 168,
+            child: CocktailCard(cocktail: cocktail),
+          ),
+        const SizedBox(
+          height: 8,
+        )
+      ],
     );
   }
 }
