@@ -14,11 +14,11 @@ class TagChip extends StatelessWidget {
 
     return Container(
       decoration: ShapeDecoration(
-        shape: StadiumBorder(),
+        shape: const StadiumBorder(),
         color: colorScheme.secondaryContainer,
       ),
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: AppPaddings.small),
+      padding: const EdgeInsets.symmetric(horizontal: AppPaddings.small),
       child: Text(
         tag.name,
         style: TextStyle(

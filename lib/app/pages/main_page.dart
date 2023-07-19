@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget {
               ],
             ),
             child: SalomonBottomBar(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 vertical: AppPaddings.small,
                 horizontal: AppPaddings.veryLarge,
               ),
