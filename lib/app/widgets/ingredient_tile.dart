@@ -4,6 +4,7 @@ import 'package:cocktail_gen/app/constants/app_radius.dart';
 import 'package:cocktail_gen/domain/entities/ingredient.dart';
 import 'package:flutter/material.dart';
 
+/// Карточка, которая отображает имя ингредиента и его картинку.
 class IngredientTile extends StatelessWidget {
   final Ingredient ingredient;
 

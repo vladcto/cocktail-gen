@@ -4,6 +4,7 @@ import 'package:cocktail_gen/app/widgets/ingredient_tile.dart';
 import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:flutter/material.dart';
 
+/// Страница, отображающая список всех ингредиентов.
 @RoutePage()
 class IngredientsPage extends StatelessWidget {
   static const double itemsPadding = AppPaddings.medium;
