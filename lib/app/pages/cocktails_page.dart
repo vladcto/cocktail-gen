@@ -3,6 +3,7 @@ import 'package:cocktail_gen/app/widgets/cocktail_card.dart';
 import 'package:cocktail_gen/data/repos/mock_cocktail.dart';
 import 'package:flutter/material.dart';
 
+/// Страница, отображающая список всех коктейлей.
 @RoutePage()
 class CocktailsPage extends StatelessWidget {
   const CocktailsPage({Key? key}) : super(key: key);
@@ -17,9 +18,6 @@ class CocktailsPage extends StatelessWidget {
             height: 168,
             child: CocktailCard(cocktail: cocktail),
           ),
-        const SizedBox(
-          height: 8,
-        )
       ],
     );
   }

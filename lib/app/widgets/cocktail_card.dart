@@ -1,9 +1,16 @@
+import 'dart:ui';
+
+import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
+import 'package:cocktail_gen/app/widgets/tag_chip.dart';
 import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 import 'package:flutter/material.dart';
 
+/// Карточка, отображающая краткую информацию о [Cocktail].
+///
+/// Отображает картинку, имя, 4 ингредиента и список тегов.
 class CocktailCard extends StatelessWidget {
   final Cocktail cocktail;
   const CocktailCard({Key? key, required this.cocktail}) : super(key: key);
@@ -24,6 +31,7 @@ class CocktailCard extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
+                  // Картинка рецепта.
                   AspectRatio(
                     aspectRatio: 1,
                     child: ClipRRect(
@@ -34,6 +42,7 @@ class CocktailCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(width: AppPaddings.large),
                   Expanded(
                     child: _CocktailShortInfo(cocktail: cocktail),
                   ),
@@ -42,7 +51,7 @@ class CocktailCard extends StatelessWidget {
             ),
             const SizedBox(height: AppPaddings.small),
             SizedBox(
-              height: 32,
+              height: 24,
               child: _TagList(tags: cocktail.tags),
             )
           ],
@@ -52,6 +61,7 @@ class CocktailCard extends StatelessWidget {
   }
 }
 
+/// Отображает имя и список ингредиентов коктейля.
 class _CocktailShortInfo extends StatelessWidget {
   final Cocktail cocktail;
 
@@ -59,17 +69,34 @@ class _CocktailShortInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var text = cocktail.ingredients.map((e) => " • ${e.name}").join("\n");
+    final colorScheme = Theme.of(context).colorScheme;
+    final ingredientsText =
+        cocktail.ingredients.map((e) => " • ${e.name}").join("\n");
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(cocktail.name),
+        // Имя коктейля.
+        Text(
+          cocktail.name,
+          style: TextStyle(
+            letterSpacing: 1.2,
+            color: colorScheme.secondary,
+            fontSize: AppFontSize.header,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        // Список ингредиентов коктейля.
         Expanded(
           // FIXME: Исправть обрывание текста. [elipsis] не обрезает по строке.
           child: Text(
-            text,
-            maxLines: 3,
+            ingredientsText,
+            maxLines: 4,
             overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: AppFontSize.small,
+              color: colorScheme.onSurfaceVariant,
+            ),
           ),
         ),
       ],
@@ -77,6 +104,7 @@ class _CocktailShortInfo extends StatelessWidget {
   }
 }
 
+/// [ListView] отображающий [Tag] с помощью [TagChip].
 class _TagList extends StatelessWidget {
   final List<Tag> tags;
 
@@ -84,14 +112,19 @@ class _TagList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: [
-        for (final tag in tags)
-          Chip(
-            label: Text(tag.name),
-          ),
-      ],
+    return ScrollConfiguration(
+      behavior: ScrollConfiguration.of(context).copyWith(
+        scrollbars: false,
+      ),
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: tags.length,
+        itemBuilder: (context, index) => TagChip(
+          tag: tags[index],
+        ),
+        separatorBuilder: (context, i) =>
+            const SizedBox(width: AppPaddings.small),
+      ),
     );
   }
 }
