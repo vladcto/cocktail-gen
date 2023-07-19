@@ -1,6 +1,6 @@
 sealed class AppPaddings {
-  static double small = 8;
-  static double medium = 16;
-  static double large = 22;
-  static double veryLarge = 32;
+  static const double small = 8;
+  static const double medium = 16;
+  static const double large = 22;
+  static const double veryLarge = 32;
 }

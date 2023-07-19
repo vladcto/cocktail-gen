@@ -19,13 +19,13 @@ class IngredientMeasure with _$IngredientMeasure {
   @Assert("quantity > 0")
   factory IngredientMeasure({
     /// ID соответствующего [Ingredient].
-    required Ingredient ingredientId,
+    required int ingredientId,
 
     // ? Может выделить в отдельный класс пару [ingredientId] и [ingredientId]
     // ? и назвать [ShortIngredient]?
     // * Во избежания загрузки [Ingredient] здесь есть имя ингредиента.
     /// Имя соответствующего [Ingredient].
-    required String ingredientName,
+    required String name,
 
     /// Количество ингридиента.
     required double quantity,
