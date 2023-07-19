@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cocktail_gen/app/constants/app_theme.dart';
 import 'package:cocktail_gen/app/navigation/router.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,12 @@ class MainApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp.router(
         theme: AppTheme.dark,
+        scrollBehavior: ScrollConfiguration.of(context).copyWith(
+          dragDevices: {
+            PointerDeviceKind.touch,
+            PointerDeviceKind.mouse,
+          },
+        ),
         routerConfig: appRouter.config(),
       ),
     );
