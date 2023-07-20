@@ -12,18 +12,20 @@ class TagChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Container(
+    return DecoratedBox(
       decoration: ShapeDecoration(
         shape: const StadiumBorder(),
         color: colorScheme.secondaryContainer,
       ),
-      alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: AppPaddings.small),
-      child: Text(
-        tag.name,
-        style: TextStyle(
-          color: colorScheme.secondary,
-          fontSize: AppFontSize.small,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Text(
+          tag.name,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: colorScheme.secondary,
+            fontSize: AppFontSize.small,
+          ),
         ),
       ),
     );

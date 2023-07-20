@@ -124,8 +124,10 @@ class _TagList extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: tags.length,
-        itemBuilder: (context, index) => TagChip(
-          tag: tags[index],
+        itemBuilder: (context, index) => Center(
+          child: TagChip(
+            tag: tags[index],
+          ),
         ),
         separatorBuilder: (context, i) =>
             const SizedBox(width: AppPaddings.small),
