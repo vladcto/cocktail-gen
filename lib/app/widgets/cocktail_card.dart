@@ -19,7 +19,7 @@ class CocktailCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushRoute(
-        CocktailPreviewRoute(cocktail: cocktail),
+        CocktailPreviewRoute(),
       ),
       child: Card(
         shape: RoundedRectangleBorder(
