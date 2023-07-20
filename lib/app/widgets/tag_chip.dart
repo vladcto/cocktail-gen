@@ -1,5 +1,4 @@
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
-import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 import 'package:flutter/material.dart';
 

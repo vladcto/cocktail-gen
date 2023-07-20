@@ -65,7 +65,7 @@ class MockCocktail {
       // Add more ingredient measures as needed
     ],
     steps: [
-      "In a glass, muddle mint leaves and simple syrup.",
+      "In a glass, muddle mint leaves and simple syrup.SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMEEEEEEEEEEEEEEEEEEEE LOOOOOOOOOOOOOONG TEEEXT",
       "Add fresh lime juice and white rum.",
       "Fill the glass with crushed ice.",
       "Top up with soda water.",

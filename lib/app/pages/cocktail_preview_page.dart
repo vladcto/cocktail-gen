@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
+import 'package:cocktail_gen/app/widgets/cocktail_preview/description_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/ingredients_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/steps_preview.dart';
 import 'package:cocktail_gen/app/widgets/theme_segmented_button.dart';
@@ -62,10 +63,10 @@ class CocktailPreviewPage extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppPaddings.large),
             child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 200),
               child: switch (ref.watch(_previewTypeProvider)) {
                 PreviewType.description =>
-                  _DescriptionPreview(cocktail: cocktail),
+                  DescriptionPreview(cocktail: cocktail),
                 PreviewType.ingredients => IngredientsPreview(
                     ingredients: cocktail.ingredients,
                   ),
@@ -76,15 +77,5 @@ class CocktailPreviewPage extends ConsumerWidget {
         ],
       ),
     );
-  }
-}
-
-class _DescriptionPreview extends StatelessWidget {
-  final Cocktail cocktail;
-  const _DescriptionPreview({required this.cocktail});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(cocktail.description);
   }
 }
