@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/ingredients_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/steps_preview.dart';
@@ -35,7 +36,7 @@ class CocktailPreviewPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
+            padding: const EdgeInsets.symmetric(horizontal: AppPaddings.medium),
             child: ThemeSegmentedButton(
               segments: const [
                 ButtonSegment(
@@ -57,13 +58,21 @@ class CocktailPreviewPage extends ConsumerWidget {
               },
             ),
           ),
-          switch (ref.watch(_previewTypeProvider)) {
-            PreviewType.description => _DescriptionPreview(cocktail: cocktail),
-            PreviewType.ingredients => IngredientsPreview(
-                ingredients: cocktail.ingredients,
-              ),
-            PreviewType.steps => StepsPreview(steps: cocktail.steps),
-          }
+          const SizedBox(height: AppPaddings.medium),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppPaddings.large),
+            child: AnimatedSwitcher(
+              duration: Duration(milliseconds: 200),
+              child: switch (ref.watch(_previewTypeProvider)) {
+                PreviewType.description =>
+                  _DescriptionPreview(cocktail: cocktail),
+                PreviewType.ingredients => IngredientsPreview(
+                    ingredients: cocktail.ingredients,
+                  ),
+                PreviewType.steps => StepsPreview(steps: cocktail.steps),
+              },
+            ),
+          )
         ],
       ),
     );
