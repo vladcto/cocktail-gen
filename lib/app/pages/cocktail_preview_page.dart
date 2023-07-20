@@ -69,6 +69,7 @@ class CocktailPreviewPage extends ConsumerWidget {
                   DescriptionPreview(cocktail: cocktail),
                 PreviewType.ingredients => IngredientsPreview(
                     ingredients: cocktail.ingredients,
+                    things: cocktail.things,
                   ),
                 PreviewType.steps => StepsPreview(steps: cocktail.steps),
               },
