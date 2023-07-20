@@ -1,7 +1,8 @@
-
+import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
+import 'package:cocktail_gen/app/navigation/router.gr.dart';
 import 'package:cocktail_gen/app/widgets/tag_chip.dart';
 import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
@@ -16,44 +17,49 @@ class CocktailCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: AppRadius.small,
+    return GestureDetector(
+      onTap: () => context.pushRoute(
+        CocktailPreviewRoute(cocktail: cocktail),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppPaddings.medium,
-          vertical: AppPaddings.small,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: AppRadius.small,
         ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  // Картинка рецепта.
-                  AspectRatio(
-                    aspectRatio: 1,
-                    child: ClipRRect(
-                      borderRadius: AppRadius.large,
-                      child: Image.network(
-                        cocktail.imageUrl,
-                        fit: BoxFit.cover,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppPaddings.medium,
+            vertical: AppPaddings.small,
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    // Картинка рецепта.
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipRRect(
+                        borderRadius: AppRadius.large,
+                        child: Image.network(
+                          cocktail.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(width: AppPaddings.large),
-                  Expanded(
-                    child: _CocktailShortInfo(cocktail: cocktail),
-                  ),
-                ],
+                    const SizedBox(width: AppPaddings.large),
+                    Expanded(
+                      child: _CocktailShortInfo(cocktail: cocktail),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: AppPaddings.small),
-            SizedBox(
-              height: 24,
-              child: _TagList(tags: cocktail.tags),
-            )
-          ],
+              const SizedBox(height: AppPaddings.small),
+              SizedBox(
+                height: 24,
+                child: _TagList(tags: cocktail.tags),
+              )
+            ],
+          ),
         ),
       ),
     );

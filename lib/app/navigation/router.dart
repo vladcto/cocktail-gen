@@ -26,6 +26,10 @@ class AppRouter extends $AppRouter {
           ],
         ),
         AutoRoute(
+          page: CocktailPreviewRoute.page,
+          path: "/${NavigationUrl.cocktail}/*",
+        ),
+        AutoRoute(
           page: IngredientPreviewRoute.page,
           path: "/${NavigationUrl.ingredients}/*",
         ),
