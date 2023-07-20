@@ -1,5 +1,6 @@
 import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/ingredient_measure.dart';
+import 'package:cocktail_gen/domain/entities/ingredient_thing.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 
 class MockCocktail {
@@ -62,7 +63,10 @@ class MockCocktail {
         quantity: 120.0,
         unit: MeasureUnits.milliliters,
       ),
-      // Add more ingredient measures as needed
+    ],
+    things: [
+      IngredientThing(ingredientId: 1, name: "Джиггер 30 мл"),
+      IngredientThing(ingredientId: 2, name: "Бостонский шейкер"),
     ],
     steps: [
       "In a glass, muddle mint leaves and simple syrup.SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMEEEEEEEEEEEEEEEEEEEE LOOOOOOOOOOOOOONG TEEEXT",
@@ -70,7 +74,6 @@ class MockCocktail {
       "Fill the glass with crushed ice.",
       "Top up with soda water.",
       "Garnish with mint sprigs and lime slices.",
-      // Add more steps as needed
     ],
   );
 

@@ -1,3 +1,4 @@
+import 'package:cocktail_gen/domain/entities/ingredient_thing.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 
 import 'ingredient_measure.dart';
@@ -17,6 +18,7 @@ class Cocktail with _$Cocktail {
     required String imageUrl,
     required List<Tag> tags,
     required List<IngredientMeasure> ingredients,
+    required List<IngredientThing> things,
     required List<String> steps,
   }) = _Cocktail;
 }
