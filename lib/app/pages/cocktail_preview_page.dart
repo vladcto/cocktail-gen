@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
+import 'package:cocktail_gen/app/widgets/cocktail_preview/ingredients_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/steps_preview.dart';
 import 'package:cocktail_gen/app/widgets/theme_segmented_button.dart';
 import 'package:cocktail_gen/data/repos/mock_cocktail.dart';
@@ -58,8 +59,10 @@ class CocktailPreviewPage extends ConsumerWidget {
           ),
           switch (ref.watch(_previewTypeProvider)) {
             PreviewType.description => _DescriptionPreview(cocktail: cocktail),
+            PreviewType.ingredients => IngredientsPreview(
+                ingredients: cocktail.ingredients,
+              ),
             PreviewType.steps => StepsPreview(steps: cocktail.steps),
-            _ => const SizedBox.shrink(),
           }
         ],
       ),
@@ -74,14 +77,5 @@ class _DescriptionPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(cocktail.description);
-  }
-}
-
-class _IngredientPreview extends StatelessWidget {
-  const _IngredientPreview();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
