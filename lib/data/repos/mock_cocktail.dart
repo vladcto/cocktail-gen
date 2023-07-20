@@ -3,7 +3,7 @@ import 'package:cocktail_gen/domain/entities/ingredient_measure.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 
 class MockCocktail {
-  static final Cocktail _cocktail = Cocktail(
+  static final Cocktail cocktail = Cocktail(
     id: 1,
     name: "Мохито",
     description: "Refreshing cocktail with mint and lime flavors.",
@@ -65,7 +65,7 @@ class MockCocktail {
       // Add more ingredient measures as needed
     ],
     steps: [
-      "In a glass, muddle mint leaves and simple syrup.",
+      "In a glass, muddle mint leaves and simple syrup.SOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMEEEEEEEEEEEEEEEEEEEE LOOOOOOOOOOOOOONG TEEEXT",
       "Add fresh lime juice and white rum.",
       "Fill the glass with crushed ice.",
       "Top up with soda water.",
@@ -76,16 +76,16 @@ class MockCocktail {
 
   @Deprecated("Тестовые данные")
   static List<Cocktail> data = [
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
-    _cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
+    cocktail,
   ];
 }
