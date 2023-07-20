@@ -9,6 +9,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           page: MainRoute.page,
           initial: true,
+          path: "/",
           children: [
             AutoRoute(
               page: CocktailsRoute.page,
@@ -24,6 +25,10 @@ class AppRouter extends $AppRouter {
             ),
           ],
         ),
-        RedirectRoute(path: "*", redirectTo: NavigationUrl.cocktail),
+        AutoRoute(
+          page: IngredientPreviewRoute.page,
+          path: "/${NavigationUrl.ingredients}/*",
+        ),
+        RedirectRoute(path: "*", redirectTo: "/${NavigationUrl.cocktail}"),
       ];
 }

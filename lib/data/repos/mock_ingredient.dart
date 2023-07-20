@@ -1,7 +1,7 @@
 import 'package:cocktail_gen/domain/entities/ingredient.dart';
 
 class MockIngredient {
-  static final Ingredient _ingredient = Ingredient(
+  static final Ingredient ingredient = Ingredient(
     id: 1,
     name: "Самбука",
     description: "Длинное описание",
@@ -11,18 +11,18 @@ class MockIngredient {
 
   @Deprecated("Тестовые данные")
   static List<Ingredient> data = [
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
-    _ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
+    ingredient,
   ];
 }
