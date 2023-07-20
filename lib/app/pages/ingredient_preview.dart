@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
+import 'package:cocktail_gen/app/constants/app_paddings.dart';
+import 'package:cocktail_gen/app/constants/app_radius.dart';
 import 'package:cocktail_gen/app/widgets/url_back_button.dart';
 import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:cocktail_gen/domain/entities/ingredient.dart';
@@ -9,20 +11,61 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class IngredientPreviewPage extends StatelessWidget {
+  static const double imagePadding = 32;
   const IngredientPreviewPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final ingredient = MockIngredient.ingredient;
+    final colorScheme = Theme.of(context).colorScheme;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          ThemeSliverAppBar(ingredient: ingredient),
-          SliverToBoxAdapter(
-            child: Text(
-              ingredient.description,
-              style: const TextStyle(fontSize: 32),
+      appBar: AppBar(
+        centerTitle: true,
+        leading: const UrlBackButton(),
+        title: Text(
+          ingredient.name,
+          style: TextStyle(
+            fontSize: AppFontSize.title,
+            color: colorScheme.secondary,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: screenWidth,
+            child: Image.network(
+              ingredient.imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned.fill(
+            child: ListView(
+              children: [
+                SizedBox(height: screenWidth - imagePadding),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: AppRadius.standard,
+                    color: colorScheme.background,
+                  ),
+                  padding: EdgeInsets.only(
+                    left: AppPaddings.medium,
+                    right: AppPaddings.medium,
+                    top: imagePadding,
+                    bottom: screenWidth / 2,
+                  ),
+                  child: Text(
+                    ingredient.description,
+                    style: const TextStyle(fontSize: 32),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
