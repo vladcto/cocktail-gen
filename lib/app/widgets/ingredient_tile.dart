@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
@@ -20,7 +21,10 @@ class IngredientTile extends StatelessWidget {
           aspectRatio: 1,
           child: ClipRRect(
             borderRadius: AppRadius.standard,
-            child: Image.network(ingredient.imageUrl),
+            child: GestureDetector(
+                // TODO: Сделать навигацию к ингредиенту.
+                onTap: () => context.router.pushNamed("/ingredients/me"),
+                child: Image.network(ingredient.imageUrl)),
           ),
         ),
         const SizedBox(width: AppPaddings.small),
