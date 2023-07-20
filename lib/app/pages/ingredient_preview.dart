@@ -35,6 +35,7 @@ class IngredientPreviewPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
+          // Делаем изображение квадратным.
           Positioned(
             top: 0,
             left: 0,
@@ -48,21 +49,41 @@ class IngredientPreviewPage extends StatelessWidget {
           Positioned.fill(
             child: ListView(
               children: [
+                // Чтобы текст немного заехал на изображение.
                 SizedBox(height: screenWidth - imagePadding),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: AppRadius.standard,
                     color: colorScheme.background,
                   ),
+                  // Учитываем шапку контейнера.
                   padding: EdgeInsets.only(
-                    left: AppPaddings.medium,
-                    right: AppPaddings.medium,
+                    left: AppPaddings.veryLarge,
+                    right: AppPaddings.veryLarge,
                     top: imagePadding,
-                    bottom: screenWidth / 2,
+                    bottom: screenWidth,
                   ),
-                  child: Text(
-                    ingredient.description,
-                    style: const TextStyle(fontSize: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        ingredient.type,
+                        style: TextStyle(
+                          fontSize: AppFontSize.title,
+                          fontWeight: FontWeight.w500,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(height: AppPaddings.medium),
+                      Text(
+                        ingredient.description,
+                        style: TextStyle(
+                          fontSize: AppFontSize.title,
+                          fontWeight: FontWeight.w500,
+                          color: colorScheme.onSurface,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

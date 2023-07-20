@@ -8,6 +8,8 @@ class Ingredient with _$Ingredient {
     required int id,
     required String name,
     required String description,
+    /// Тип ингредиента (ликер, фрукт и тд...)
+    required String type,
     required String imageUrl,
   }) = _Ingredient;
 }
