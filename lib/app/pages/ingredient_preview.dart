@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
+import 'package:cocktail_gen/app/widgets/sub_route_app_bar.dart';
 import 'package:cocktail_gen/app/widgets/url_back_button.dart';
 import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:flutter/material.dart';
@@ -20,18 +21,7 @@ class IngredientPreviewPage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: const UrlBackButton(),
-        title: Text(
-          ingredient.name,
-          style: TextStyle(
-            fontSize: AppFontSize.title,
-            color: colorScheme.secondary,
-            fontWeight: fontWeight,
-          ),
-        ),
-      ),
+      appBar: SubRouteAppBar(title: ingredient.name),
       body: Stack(
         children: [
           // Делаем изображение квадратным.
