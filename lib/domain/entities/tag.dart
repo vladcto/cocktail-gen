@@ -1,9 +1,14 @@
-class Tag {
-  final int id;
-  final String name;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  Tag(this.id, this.name);
+part 'tag.freezed.dart';
 
-  @override
-  String toString() => name;
+@freezed
+abstract class Tag with _$Tag {
+  factory Tag({
+    /// ID тега в базе данных.
+    ///
+    /// -1 если такого тега не существует.
+    @Default(-1) int id,
+    required String name,
+  }) = _Tag;
 }

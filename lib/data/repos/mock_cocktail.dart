@@ -11,26 +11,8 @@ class MockCocktail {
     imageUrl:
         "https://upload.wikimedia.org/wikipedia/commons/b/b3/Mojito_made_with_rum%2C_lime%2C_sugar%2C_mint%2C_club_soda%2C_served_in_a_tall_glass_-_Evan_Swigart.jpg",
     tags: [
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
-      Tag(1, "Refreshing"),
-      Tag(2, "Minty"),
+      Tag(id: 1, name: "Refreshing"),
+      Tag(id: 2, name: "Minty"),
     ],
     ingredients: [
       IngredientMeasure(

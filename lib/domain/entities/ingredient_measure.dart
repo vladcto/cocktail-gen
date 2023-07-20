@@ -19,7 +19,9 @@ class IngredientMeasure with _$IngredientMeasure {
   @Assert("quantity > 0")
   factory IngredientMeasure({
     /// ID соответствующего [Ingredient].
-    required int ingredientId,
+    ///
+    /// -1 если ингредиента не существует в базе данных.
+    @Default(-1) int ingredientId,
 
     // ? Может выделить в отдельный класс пару [ingredientId] и [ingredientId]
     // ? и назвать [ShortIngredient]?

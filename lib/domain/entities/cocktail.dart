@@ -11,8 +11,10 @@ class Cocktail with _$Cocktail {
   @Assert("steps.length > 0")
   @Assert("ingredients.length > 0")
   factory Cocktail({
-    // ? Можно будет убрать, если я решу, что не нужен `web-url` для рецепта.
-    required int id,
+    /// ID рецепта в БД.
+    /// 
+    /// -1 если рецепт не существует в БД.
+    @Default(-1) int id,
     required String name,
     required String description,
     required String imageUrl,
