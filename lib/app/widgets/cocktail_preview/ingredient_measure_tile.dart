@@ -28,7 +28,7 @@ class IngredientMeasureTile extends StatelessWidget {
           SizedBox(
             width: 64,
             child: Text(
-              "${measure.quantity.toStringAsFixed(1)} ml",
+              "${measure.quantity.toInt().toString()} ${measure.unit.toString()}",
               style: TextStyle(
                 color: colorScheme.onSurfaceVariant,
                 fontWeight: _fontWeight,

@@ -15,7 +15,15 @@ enum MeasureUnits {
   milliliters,
   oz,
   leaves,
-  drops,
+  drops;
+
+  @override
+  String toString() {
+    return switch (this) {
+      MeasureUnits.milliliters => "мл",
+      _ => "шт",
+    };
+  }
 }
 
 /// Информация о пропорциях [Ingredient].
