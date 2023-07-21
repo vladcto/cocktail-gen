@@ -8,9 +8,9 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 @RoutePage()
 class MainPage extends StatelessWidget {
-  static const generateText = "Generate";
-  static const cocktailsText = "Cocktails";
-  static const ingredientsText = "Ingredients";
+  static const generateText = "Магия";
+  static const cocktailsText = "Коктейли";
+  static const ingredientsText = "Ингредиенты";
 
   const MainPage({Key? key}) : super(key: key);
 
@@ -43,7 +43,7 @@ class MainPage extends StatelessWidget {
               backgroundColor: colorScheme.surface,
               items: [
                 SalomonBottomBarItem(
-                  icon: Icon(MdiIcons.lamp),
+                  icon: Icon(MdiIcons.creation),
                   title: const Text(generateText),
                 ),
                 SalomonBottomBarItem(
@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget {
                   title: const Text(cocktailsText),
                 ),
                 SalomonBottomBarItem(
-                  icon: Icon(MdiIcons.store),
+                  icon: Icon(MdiIcons.book),
                   title: const Text(ingredientsText),
                 ),
               ],
@@ -60,8 +60,24 @@ class MainPage extends StatelessWidget {
           ),
           appBar: AppBar(
             title: Center(
-              // TODO: Изменить текст.
-              child: Text(tabsRouter.current.name),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Cocktail",
+                    style: TextStyle(
+                      color: colorScheme.secondary,
+                    ),
+                  ),
+                  Text(
+                    "Gen",
+                    style: TextStyle(
+                      color: colorScheme.primary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           body: child,
