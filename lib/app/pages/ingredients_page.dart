@@ -1,7 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/widgets/ingredient_tile.dart';
-import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:cocktail_gen/interfaces/db_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

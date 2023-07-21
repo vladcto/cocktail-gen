@@ -4,9 +4,7 @@ import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/di.dart';
 import 'package:cocktail_gen/app/navigation/router.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
-import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
 import 'package:cocktail_gen/interfaces/db_repository.dart';
-import 'package:cocktail_gen/main.dart';
 import 'package:flutter/material.dart';
 
 /// Страница, отображающая информация о ингредиенте.

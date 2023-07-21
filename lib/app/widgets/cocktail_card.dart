@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
-import 'package:cocktail_gen/app/navigation/router.gr.dart';
 import 'package:cocktail_gen/app/widgets/tag_chip.dart';
 import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';

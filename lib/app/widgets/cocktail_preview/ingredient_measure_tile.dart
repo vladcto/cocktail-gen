@@ -53,8 +53,11 @@ class IngredientMeasureTile extends StatelessWidget {
               measure.name,
               style: TextStyle(
                 color: colorScheme.secondary,
+                decorationColor: colorScheme.secondary,
                 fontWeight: _fontWeight,
                 fontSize: _fontSize,
+                decoration:
+                    measure.ingredientId > -1 ? TextDecoration.underline : null,
               ),
             ),
           ),

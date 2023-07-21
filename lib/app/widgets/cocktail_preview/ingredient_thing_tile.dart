@@ -34,8 +34,11 @@ class IngredientThingTile extends StatelessWidget {
               thing.name,
               style: TextStyle(
                 color: colorScheme.secondary,
+                decorationColor: colorScheme.secondary,
                 fontWeight: _fontWeight,
                 fontSize: _fontSize,
+                decoration:
+                    thing.ingredientId > -1 ? TextDecoration.underline : null,
               ),
             ),
           ),
