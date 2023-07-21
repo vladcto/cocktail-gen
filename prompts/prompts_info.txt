@@ -1,0 +1,2 @@
+russian_prompt_tokens = 975
+eng_prompt_tokens = 256
