@@ -1,4 +1,6 @@
 class GptPrompts {
+  // ? Может заменить [String] на [List]
+  // ? Но тогда усложниться логика написания UI.
   static String generateRecipePrompt(String ingredients, String tags) {
     return """Ты генератор рецептов в приложении для профессиональных барменов.
 Твоя задача генерировать уникальные и необычныe рецепты.
