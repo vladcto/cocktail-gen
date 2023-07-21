@@ -18,24 +18,27 @@ class DescriptionPreview extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          "Теги",
-          style: TextStyle(
-            color: colorScheme.primary,
-            fontSize: AppFontSize.header,
-            fontWeight: _titleFontWeight,
+        // Нужно ли показывать теги.
+        if (cocktail.tags.isNotEmpty) ...[
+          Text(
+            "Теги",
+            style: TextStyle(
+              color: colorScheme.primary,
+              fontSize: AppFontSize.header,
+              fontWeight: _titleFontWeight,
+            ),
           ),
-        ),
-        const SizedBox(height: AppPaddings.small),
-        Wrap(
-          spacing: AppPaddings.small,
-          runSpacing: AppPaddings.small,
-          children: cocktail.tags
-              .map(
-                (e) => TagChip(tag: e),
-              )
-              .toList(),
-        ),
+          const SizedBox(height: AppPaddings.small),
+          Wrap(
+            spacing: AppPaddings.small,
+            runSpacing: AppPaddings.small,
+            children: cocktail.tags
+                .map(
+                  (e) => TagChip(tag: e),
+                )
+                .toList(),
+          ),
+        ],
         const SizedBox(height: AppPaddings.large),
         Text(
           "Ещё немного",
