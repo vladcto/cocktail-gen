@@ -1,18 +1,15 @@
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
-import 'package:cocktail_gen/app/widgets/url_back_button.dart';
+import 'package:cocktail_gen/app/widgets/theme_back_button.dart';
 import 'package:flutter/material.dart';
 
 class SubRouteAppBar extends AppBar {
-  static const backButton = UrlBackButton();
-
   SubRouteAppBar({
     Key? key,
-    Widget? backButton = backButton,
     required String title,
   }) : super(
           key: key,
           centerTitle: true,
-          leading: backButton,
+          leading: const ThemeBackButton(),
           title: Builder(
             builder: (context) {
               return Text(

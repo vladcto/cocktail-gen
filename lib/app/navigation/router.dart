@@ -10,6 +10,10 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
+          page: IngredientPreviewRoute.page,
+          path: "/cocktail/1/*",
+        ),
+        AutoRoute(
           page: MainRoute.page,
           initial: true,
           path: "/",

@@ -13,15 +13,11 @@ class AdditionalLayoutInfo extends StatelessWidget {
   final String imageUrl;
   final Widget child;
 
-  /// Перемещает ли кнопка навигации в [AppBar] назад по URL, иначе по стеку навигации.
-  final bool isUrlButton;
-
   const AdditionalLayoutInfo({
     Key? key,
     required this.appBarText,
     required this.imageUrl,
     required this.child,
-    this.isUrlButton = true,
   }) : super(key: key);
 
   @override
@@ -32,12 +28,6 @@ class AdditionalLayoutInfo extends StatelessWidget {
     return Scaffold(
       appBar: SubRouteAppBar(
         title: appBarText,
-        backButton: isUrlButton
-            ? SubRouteAppBar.backButton
-            : ElevatedButton(
-                onPressed: () => context.popRoute(),
-                child: const Text("Назад"),
-              ),
       ),
       body: Stack(
         children: [

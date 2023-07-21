@@ -23,7 +23,6 @@ class IngredientTile extends StatelessWidget {
             borderRadius: AppRadius.standard,
             child: GestureDetector(
               onTap: () {
-                print("${context.router.currentUrl}/${ingredient.id}");
                 context.router.pushNamed(
                   "${context.router.currentUrl}/${ingredient.id}",
                 );
