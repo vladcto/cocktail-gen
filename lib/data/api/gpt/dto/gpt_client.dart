@@ -37,6 +37,7 @@ class GptClient {
 
     final response = await openAI.onChatCompletion(request: request);
     final data = response!.choices.first.message!.content;
+    print(data);
     final CocktailGptDto dto = CocktailGptDto.fromString(data);
     return CocktailGptMapper.mapCocktailGptDtoToCocktail(dto);
   }

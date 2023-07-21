@@ -21,18 +21,21 @@ class IngredientMeasureTile extends StatelessWidget {
       children: [
         const SimpleCheckbox(),
         const SizedBox(width: AppPaddings.small),
-        SizedBox(
-          width: 64,
-          child: Text(
-            "${measure.quantity.toStringAsFixed(1)} ml",
-            style: TextStyle(
-              color: colorScheme.onSurfaceVariant,
-              fontWeight: _fontWeight,
-              fontSize: _fontSize,
+        // Нужно ли показывать единицы измерения.
+        if (measure.unit != MeasureUnits.none) ...[
+          SizedBox(
+            width: 64,
+            child: Text(
+              "${measure.quantity.toStringAsFixed(1)} ml",
+              style: TextStyle(
+                color: colorScheme.onSurfaceVariant,
+                fontWeight: _fontWeight,
+                fontSize: _fontSize,
+              ),
             ),
           ),
-        ),
-        const SizedBox(width: AppPaddings.small),
+          const SizedBox(width: AppPaddings.small),
+        ],
         Expanded(
           child: Text(
             measure.name,
