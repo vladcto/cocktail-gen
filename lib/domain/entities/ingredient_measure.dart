@@ -2,6 +2,7 @@ import 'package:cocktail_gen/domain/entities/ingredient.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ingredient_measure.freezed.dart';
+part 'ingredient_measure.g.dart';
 
 /// Единица измерения ингридиентов.
 enum MeasureUnits {
@@ -35,4 +36,7 @@ class IngredientMeasure with _$IngredientMeasure {
     /// Единица измерения количества ингридиента.
     required MeasureUnits unit,
   }) = _IngredientMeasure;
+
+  factory IngredientMeasure.fromJson(Map<String, dynamic> json) =>
+      _$IngredientMeasureFromJson(json);
 }
