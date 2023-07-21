@@ -24,7 +24,7 @@ class GptClient {
     final request = ChatCompleteText(
       messages: [
         Messages(
-          role: Role.function,
+          role: Role.system,
           content: GptPrompts.generateRecipePrompt(
             ingredients,
             tags,
