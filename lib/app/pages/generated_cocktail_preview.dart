@@ -10,6 +10,9 @@ class GeneratedCocktailPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CocktailPreviewLayout(cocktail: cocktail);
+    return CocktailPreviewLayout(
+      cocktail: cocktail,
+      isUrlButton: false,
+    );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/di.dart';
+import 'package:cocktail_gen/app/pages/generated_cocktail_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,6 +11,8 @@ class GeneratorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = context.router;
+
     return Center(
       child: ElevatedButton(
         onPressed: () {
@@ -19,7 +23,9 @@ class GeneratorPage extends ConsumerWidget {
                 "джин",
               )
               .then(
-                (value) => print(value),
+                (e) => router.pushWidget(
+                  GeneratedCocktailPreview(cocktail: e),
+                ),
               );
         },
         child: Text("Press me"),

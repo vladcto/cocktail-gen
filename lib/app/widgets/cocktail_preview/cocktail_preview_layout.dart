@@ -18,16 +18,24 @@ final _previewTypeProvider = StateProvider(
   (ref) => PreviewType.description,
 );
 
+/// Страница, отображающая информацию о [Cocktail].
 class CocktailPreviewLayout extends ConsumerWidget {
   final Cocktail cocktail;
+  /// Перемещает ли кнопка навигации в [AppBar] назад по URL, иначе по стеку навигации.
+  final bool isUrlButton;
 
-  const CocktailPreviewLayout({Key? key, required this.cocktail}) : super(key: key);
+  const CocktailPreviewLayout({
+    Key? key,
+    required this.cocktail,
+    required this.isUrlButton,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AdditionalLayoutInfo(
       appBarText: cocktail.name,
       imageUrl: cocktail.imageUrl,
+      isUrlButton: isUrlButton,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

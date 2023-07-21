@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/widgets/sub_route_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +13,15 @@ class AdditionalLayoutInfo extends StatelessWidget {
   final String imageUrl;
   final Widget child;
 
+  /// Перемещает ли кнопка навигации в [AppBar] назад по URL, иначе по стеку навигации.
+  final bool isUrlButton;
+
   const AdditionalLayoutInfo({
     Key? key,
     required this.appBarText,
     required this.imageUrl,
     required this.child,
+    this.isUrlButton = true,
   }) : super(key: key);
 
   @override
@@ -25,7 +30,15 @@ class AdditionalLayoutInfo extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      appBar: SubRouteAppBar(title: appBarText),
+      appBar: SubRouteAppBar(
+        title: appBarText,
+        backButton: isUrlButton
+            ? SubRouteAppBar.backButton
+            : ElevatedButton(
+                onPressed: () => context.popRoute(),
+                child: Text("Назад"),
+              ),
+      ),
       body: Stack(
         children: [
           // Делаем изображение квадратным.

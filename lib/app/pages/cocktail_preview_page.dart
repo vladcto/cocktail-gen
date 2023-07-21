@@ -15,6 +15,9 @@ class CocktailPreviewPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return CocktailPreviewLayout(cocktail: cocktail);
+    return CocktailPreviewLayout(
+      cocktail: cocktail,
+      isUrlButton: true,
+    );
   }
 }
