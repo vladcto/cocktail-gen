@@ -6,6 +6,10 @@ part 'ingredient_measure.g.dart';
 
 /// Единица измерения ингридиентов.
 enum MeasureUnits {
+  /// Вариант, если в названии ингредиента уже есть единица измерения.
+  ///
+  /// Не рекомендуется использовать. Только для запросов к API GPT.
+  none,
   spoons,
   pieces,
   milliliters,
@@ -17,7 +21,6 @@ enum MeasureUnits {
 /// Информация о пропорциях [Ingredient].
 @freezed
 class IngredientMeasure with _$IngredientMeasure {
-  @Assert("quantity > 0")
   factory IngredientMeasure({
     /// ID соответствующего [Ingredient].
     ///
