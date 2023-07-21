@@ -7,8 +7,7 @@ part 'cocktail_isar.g.dart';
 
 @collection
 class CocktailIsar {
-  Id id = Isar.autoIncrement;
-
+  final Id id;
   final String name;
   final String description;
   final String imageUrl;
@@ -17,13 +16,14 @@ class CocktailIsar {
   final List<IngredientThingIsar> things;
   final List<String> steps;
 
-  CocktailIsar(
-    this.name,
-    this.description,
-    this.imageUrl,
-    this.tagsIds,
-    this.ingredients,
-    this.things,
-    this.steps,
-  );
+  CocktailIsar({
+    this.id = Isar.autoIncrement,
+    required this.name,
+    required this.description,
+    required this.imageUrl,
+    required this.tagsIds,
+    required this.ingredients,
+    required this.things,
+    required this.steps,
+  });
 }

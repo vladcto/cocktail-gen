@@ -4,8 +4,11 @@ part 'tag_isar.g.dart';
 
 @collection
 class TagIsar {
-  final Id id = Isar.autoIncrement;
+  final Id id;
   final String name;
 
-  TagIsar(this.name);
+  TagIsar(
+    this.name, {
+    this.id = Isar.autoIncrement,
+  });
 }

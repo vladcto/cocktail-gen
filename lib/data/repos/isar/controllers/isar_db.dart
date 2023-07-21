@@ -1,6 +1,7 @@
 import 'package:cocktail_gen/data/repos/isar/dto/cocktail_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/ingredient_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/tag_isar.dart';
+import 'package:cocktail_gen/data/repos/isar/initial_data_repo.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/cocktail_mapper.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/ingredient_mapper.dart.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/tag_mapper.dart';
@@ -54,5 +55,15 @@ class CocktailIsarDb implements RecipeRepository {
       [CocktailIsarSchema, IngredientIsarSchema, TagIsarSchema],
       directory: dir.path,
     );
+
+    final cocktailCount = isar.cocktailIsars.count();
+    if (cocktailCount == 0) {
+      await isar.cocktailIsars.putAll(InitialDataRepo.getCocktails());
+      await isar.ingredientIsars.putAll(InitialDataRepo.getIngredients());
+      await isar.tagIsars.putAll(InitialDataRepo.getTags());
+    }
+    cocktails = await isar.cocktailIsars.where().findAll();
+    ingredients = await isar.ingredientIsars.where().findAll();
+    tags = await isar.tagIsars.where().findAll();
   }
 }
