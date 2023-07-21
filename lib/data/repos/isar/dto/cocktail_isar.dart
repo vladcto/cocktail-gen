@@ -1,7 +1,7 @@
-import 'package:cocktail_gen/data/repos/db/dto/ingredient_thing_isar.dart';
 import 'package:isar/isar.dart';
 
 import 'ingredient_measure_isar.dart';
+import 'ingredient_thing_isar.dart';
 
 part 'cocktail_isar.g.dart';
 

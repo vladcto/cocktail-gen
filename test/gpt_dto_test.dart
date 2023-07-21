@@ -4,7 +4,7 @@ import 'package:cocktail_gen/domain/entities/ingredient_measure.dart';
 import 'package:cocktail_gen/domain/entities/ingredient_thing.dart';
 import 'package:test/test.dart';
 
-final String dataWithNewLines = """name: "Экстази"
+const String dataWithNewLines = """name: "Экстази"
 description: "описание 'Экстази'!"
 ingredients: ["1","2","3","4"]
 things: ["шейкер", "мадлер", "пияла", "стакан олд-фэшн"]

@@ -22,7 +22,7 @@ class GeneratorPage extends ConsumerWidget {
                 (value) => print(value),
               );
         },
-        child: Text("Press me"),
+        child: const Text("Press me"),
       ),
     );
   }
