@@ -2,7 +2,9 @@ import 'package:auto_route/annotations.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/widgets/ingredient_tile.dart';
 import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
+import 'package:cocktail_gen/interfaces/db_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
 /// Страница, отображающая список всех ингредиентов.
 @RoutePage()
@@ -20,7 +22,7 @@ class IngredientsPage extends StatelessWidget {
         horizontal: AppPaddings.medium,
       ),
       children: [
-        for (final ingredient in MockIngredient.data)
+        for (final ingredient in GetIt.I<RecipeRepository>().fetchIngredients())
           Padding(
             padding: const EdgeInsets.symmetric(vertical: itemsPadding / 2),
             child: SizedBox(

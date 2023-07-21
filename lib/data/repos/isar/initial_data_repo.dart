@@ -13,8 +13,9 @@ sealed class InitialDataRepo {
       CocktailIsar(
         name: "1",
         description: "2",
-        imageUrl: "3",
-        tagsIds: [1],
+        imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZAq08u4YaR0Jsu2CgeptdxC74y-9QEeFYEAb6YHP&s",
+        tagsIds: [0],
         ingredients: [
           IngredientMeasureIsar()
             ..name = "Ром"
@@ -43,14 +44,16 @@ sealed class InitialDataRepo {
         name: "Ром",
         description: "Вкусный",
         type: "Кубинский напиток",
-        imageUrl: "2",
+        imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZAq08u4YaR0Jsu2CgeptdxC74y-9QEeFYEAb6YHP&s",
       ),
       IngredientIsar(
         id: 1,
         name: "Джиггер",
         description: "Крутой",
         type: "Акссесуар",
-        imageUrl: "2",
+        imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZAq08u4YaR0Jsu2CgeptdxC74y-9QEeFYEAb6YHP&s",
       ),
     ];
   }

@@ -18,8 +18,8 @@ class CocktailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushRoute(
-        CocktailPreviewRoute(),
+      onTap: () => context.router.pushNamed(
+        "${context.router.currentUrl}/${cocktail.id}",
       ),
       child: Card(
         shape: RoundedRectangleBorder(

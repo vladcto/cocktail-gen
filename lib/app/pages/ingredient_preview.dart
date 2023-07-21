@@ -1,8 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
+import 'package:cocktail_gen/app/di.dart';
+import 'package:cocktail_gen/app/navigation/router.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
 import 'package:cocktail_gen/data/repos/mock_ingredient.dart';
+import 'package:cocktail_gen/interfaces/db_repository.dart';
+import 'package:cocktail_gen/main.dart';
 import 'package:flutter/material.dart';
 
 /// Страница, отображающая информация о ингредиенте.
@@ -10,11 +14,19 @@ import 'package:flutter/material.dart';
 class IngredientPreviewPage extends StatelessWidget {
   static const double imagePadding = 32;
   static const fontWeight = FontWeight.w500;
-  const IngredientPreviewPage({Key? key}) : super(key: key);
+
+  final int ingredientId;
+
+  const IngredientPreviewPage(
+    @PathParam(AppRouter.ingredientParam) this.ingredientId, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ingredient = MockIngredient.ingredient;
+    final ingredient = getIt<RecipeRepository>().getIngredientById(
+      ingredientId,
+    )!;
     final colorScheme = Theme.of(context).colorScheme;
 
     return AdditionalLayoutInfo(
