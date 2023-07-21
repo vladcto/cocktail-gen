@@ -56,7 +56,7 @@ class CocktailIsarDb implements RecipeRepository {
       directory: dir.path,
     );
 
-    final cocktailCount = isar.cocktailIsars.count();
+    final cocktailCount = await isar.cocktailIsars.count();
     if (cocktailCount == 0) {
       await isar.cocktailIsars.putAll(InitialDataRepo.getCocktails());
       await isar.ingredientIsars.putAll(InitialDataRepo.getIngredients());
