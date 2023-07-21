@@ -4,13 +4,13 @@ import 'package:cocktail_gen/app/utils/url_cutter_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-/// Кнопка, которая переключает навигацию на предыдущий URL (до последнего "/").
-class UrlBackButton extends StatelessWidget {
+/// Кнопка, которая возвращает на предыдущий стек навигации.
+class ThemeBackButton extends StatelessWidget {
   static const double margin = 6;
   static const double iconSize = 16;
   static const double strokeWidth = 2;
 
-  const UrlBackButton({Key? key}) : super(key: key);
+  const ThemeBackButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +31,15 @@ class UrlBackButton extends StatelessWidget {
         ),
         onPressed: () {
           final router = context.router;
-          // Сохраняем URL *ДО* того, как уберем текущую страницу.
-          final prevUrl = router.currentUrl.prevUrl;
-          // Чтобы не держать в стеке убранную страницу.
-          router.removeLast();
-          router.navigateNamed(prevUrl);
+          if (router.stack.length == 1) {
+            // Сохраняем URL *ДО* того, как уберем текущую страницу.
+            final prevUrl = router.currentUrl.prevUrl;
+            // Чтобы не держать в стеке убранную страницу.
+            router.removeLast();
+            router.navigateNamed(prevUrl);
+          } else {
+            router.pop();
+          }
         },
         child: Icon(
           MdiIcons.lessThan,

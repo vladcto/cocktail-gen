@@ -4,8 +4,15 @@ import 'router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends $AppRouter {
+  static const cocktailParam = "cocktailId";
+  static const ingredientParam = "ingredientId";
+
   @override
   List<AutoRoute> get routes => [
+        AutoRoute(
+          page: IngredientPreviewRoute.page,
+          path: "/cocktail/1/*",
+        ),
         AutoRoute(
           page: MainRoute.page,
           initial: true,
@@ -27,11 +34,11 @@ class AppRouter extends $AppRouter {
         ),
         AutoRoute(
           page: CocktailPreviewRoute.page,
-          path: "/${NavigationUrl.cocktail}/*",
+          path: "/${NavigationUrl.cocktail}/:$cocktailParam",
         ),
         AutoRoute(
           page: IngredientPreviewRoute.page,
-          path: "/${NavigationUrl.ingredients}/*",
+          path: "/${NavigationUrl.ingredients}/:$ingredientParam",
         ),
         RedirectRoute(path: "*", redirectTo: "/${NavigationUrl.cocktail}"),
       ];

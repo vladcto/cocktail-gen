@@ -22,9 +22,13 @@ class IngredientTile extends StatelessWidget {
           child: ClipRRect(
             borderRadius: AppRadius.standard,
             child: GestureDetector(
-                // TODO: Сделать навигацию к ингредиенту.
-                onTap: () => context.router.pushNamed("/ingredients/me"),
-                child: Image.network(ingredient.imageUrl)),
+              onTap: () {
+                context.router.pushNamed(
+                  "${context.router.currentUrl}/${ingredient.id}",
+                );
+              },
+              child: Image.network(ingredient.imageUrl),
+            ),
           ),
         ),
         const SizedBox(width: AppPaddings.small),

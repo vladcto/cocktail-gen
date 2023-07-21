@@ -58,9 +58,13 @@ class CocktailIsarDb implements RecipeRepository {
 
     final cocktailCount = await isar.cocktailIsars.count();
     if (cocktailCount == 0) {
-      await isar.cocktailIsars.putAll(InitialDataRepo.getCocktails());
-      await isar.ingredientIsars.putAll(InitialDataRepo.getIngredients());
-      await isar.tagIsars.putAll(InitialDataRepo.getTags());
+      await isar.writeTxn(
+        () async {
+          await isar.cocktailIsars.putAll(InitialDataRepo.getCocktails());
+          await isar.ingredientIsars.putAll(InitialDataRepo.getIngredients());
+          await isar.tagIsars.putAll(InitialDataRepo.getTags());
+        },
+      );
     }
     cocktails = await isar.cocktailIsars.where().findAll();
     ingredients = await isar.ingredientIsars.where().findAll();

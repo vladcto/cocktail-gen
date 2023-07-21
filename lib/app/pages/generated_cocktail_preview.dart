@@ -12,7 +12,6 @@ class GeneratedCocktailPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return CocktailPreviewLayout(
       cocktail: cocktail,
-      isUrlButton: false,
     );
   }
 }
