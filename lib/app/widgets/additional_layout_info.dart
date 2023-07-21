@@ -36,7 +36,7 @@ class AdditionalLayoutInfo extends StatelessWidget {
             ? SubRouteAppBar.backButton
             : ElevatedButton(
                 onPressed: () => context.popRoute(),
-                child: Text("Назад"),
+                child: const Text("Назад"),
               ),
       ),
       body: Stack(
