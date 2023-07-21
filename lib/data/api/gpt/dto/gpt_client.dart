@@ -34,9 +34,11 @@ class GptClient {
       maxToken: 2200,
       model: GptTurbo0301ChatModel(),
     );
-
-    final response = await openAI.onChatCompletion(request: request);
-    final data = response!.choices.first.message!.content;
+    late ChatCTResponse response;
+    try {
+      response = (await openAI.onChatCompletion(request: request))!;
+    } catch (_) {}
+    final data = response.choices.first.message!.content;
     print(data);
     final CocktailGptDto dto = CocktailGptDto.fromString(data);
     return CocktailGptMapper.mapCocktailGptDtoToCocktail(dto);
