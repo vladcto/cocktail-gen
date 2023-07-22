@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_shadows.dart';
 import 'package:cocktail_gen/app/navigation/router.gr.dart';
+import 'package:cocktail_gen/app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -59,6 +60,14 @@ class MainPage extends StatelessWidget {
             ),
           ),
           appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () => context.router.pushWidget(
+                  const SettingsPage(),
+                ),
+                icon: const Icon(Icons.settings),
+              ),
+            ],
             title: Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -35,7 +35,8 @@ sealed class AppTheme {
     useMaterial3: true,
     brightness: Brightness.light,
     primaryColor: const Color.fromRGBO(73, 88, 171, 1),
-    colorScheme: const ColorScheme.dark(
+    cardColor: const Color.fromRGBO(236, 235, 239, 1),
+    colorScheme: const ColorScheme.light(
       // Primary.
       primary: Color.fromRGBO(73, 88, 171, 1),
       onPrimary: Color.fromRGBO(255, 255, 255, 1),
@@ -43,20 +44,20 @@ sealed class AppTheme {
       onPrimaryContainer: Color.fromRGBO(0, 16, 92, 1),
       // Secondary
       secondary: Color.fromRGBO(0, 108, 73, 1),
-      secondaryContainer: Color.fromRGBO(139, 247, 196, 1),
+      secondaryContainer: Color.fromRGBO(114, 219, 170, 1),
       // Background
       background: Color.fromRGBO(254, 251, 255, 1),
       onBackground: Color.fromRGBO(27, 27, 31, 1),
       // Surface
-      surface: Color.fromRGBO(254, 251, 255, 1),
+      surface: Color.fromRGBO(235, 231, 235, 1),
       onSurface: Color.fromRGBO(27, 27, 31, 1),
-      surfaceVariant: Color.fromRGBO(227, 225, 236, 1),
+      surfaceVariant: Color.fromRGBO(236, 235, 239, 1),
       onSurfaceVariant: Color.fromRGBO(70, 70, 79, 1),
     ),
     appBarTheme: const AppBarTheme(
       shadowColor: Colors.black,
       elevation: 8,
-      surfaceTintColor: Color.fromRGBO(254, 251, 255, 1),
+      surfaceTintColor: Color.fromRGBO(236, 235, 239, 1),
     ),
   );
 }

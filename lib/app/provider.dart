@@ -3,6 +3,6 @@ import 'package:riverpod/riverpod.dart';
 
 import 'constants/app_theme.dart';
 
-final themeProvider = StateProvider<ThemeData>{
+final themeProvider = StateProvider<ThemeData>(
   (ref) => AppTheme.dark,
-};
+);
