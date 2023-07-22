@@ -1,6 +1,7 @@
 class CocktailGptDto {
   final String name;
   final String description;
+  String? imageUrl;
   final List<String> ingredients;
   final List<String> things;
   final List<String> steps;

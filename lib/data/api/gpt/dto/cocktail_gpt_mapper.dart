@@ -13,10 +13,10 @@ class CocktailGptMapper {
         .map((ingredient) => IngredientMeasure(
               name: ingredient,
               quantity:
-                  0, // Здесь вы можете установить значение по умолчанию для quantity.
+                  0, 
               unit: MeasureUnits
-                  .none, // Здесь вы можете установить единицы измерения по умолчанию.
-            ))
+                  .none, 
+            ),)
         .toList();
 
     final things = dto.things
@@ -28,9 +28,8 @@ class CocktailGptMapper {
     return Cocktail(
       name: dto.name,
       description: dto.description,
-      imageUrl:
-          imageAddress, // Здесь вы можете установить ссылку на изображение по умолчанию.
-      tags: [], // Здесь вы можете установить список тегов по умолчанию.
+      imageUrl: dto.imageUrl ?? imageAddress,
+      tags: [],
       ingredients: ingredients,
       things: things,
       steps: dto.steps,

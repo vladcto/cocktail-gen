@@ -31,7 +31,7 @@ class ThemeBackButton extends StatelessWidget {
         ),
         onPressed: () {
           final router = context.router;
-          if (router.stack.length == 1) {
+          if (router.stack.length == 1 && !router.canPop()) {
             // Сохраняем URL *ДО* того, как уберем текущую страницу.
             final prevUrl = router.currentUrl.prevUrl;
             // Чтобы не держать в стеке убранную страницу.

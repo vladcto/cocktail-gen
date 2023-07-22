@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cocktail_gen/app/constants/app_theme.dart';
 import 'package:cocktail_gen/app/di.dart';
 import 'package:cocktail_gen/app/navigation/router.dart';
+import 'package:cocktail_gen/app/provider.dart';
 import 'package:cocktail_gen/interfaces/db_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,15 +23,20 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      child: MaterialApp.router(
-        theme: AppTheme.dark,
-        scrollBehavior: ScrollConfiguration.of(context).copyWith(
-          dragDevices: {
-            PointerDeviceKind.touch,
-            PointerDeviceKind.mouse,
-          },
-        ),
-        routerConfig: appRouter.config(),
+      child: Consumer(
+        builder: (_, ref, child) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: ref.watch(themeProvider),
+            scrollBehavior: ScrollConfiguration.of(context).copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+              },
+            ),
+            routerConfig: appRouter.config(),
+          );
+        },
       ),
     );
   }

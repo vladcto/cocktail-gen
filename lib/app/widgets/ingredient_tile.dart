@@ -27,7 +27,10 @@ class IngredientTile extends StatelessWidget {
                   "${context.router.currentUrl}/${ingredient.id}",
                 );
               },
-              child: Image.network(ingredient.imageUrl),
+              child: Image.network(
+                ingredient.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),

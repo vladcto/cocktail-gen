@@ -48,9 +48,15 @@ class AdditionalLayoutInfo extends StatelessWidget {
                 SizedBox(height: screenWidth - imagePadding),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: AppRadius.standard,
-                    color: colorScheme.background,
-                  ),
+                      borderRadius: AppRadius.standard,
+                      color: colorScheme.background,
+                      boxShadow: const [
+                        BoxShadow(
+                          offset: Offset(0, -4),
+                          blurRadius: 12,
+                          color: Colors.black12,
+                        )
+                      ]),
                   padding: EdgeInsets.only(
                     // Учитываем шапку контейнера.
                     top: imagePadding,
