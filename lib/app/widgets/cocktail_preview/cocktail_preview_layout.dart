@@ -1,5 +1,6 @@
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
+import 'package:cocktail_gen/app/widgets/cocktail_card.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/description_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/ingredients_preview.dart';
 import 'package:cocktail_gen/app/widgets/cocktail_preview/steps_preview.dart';
@@ -30,6 +31,7 @@ class CocktailPreviewLayout extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AdditionalLayoutInfo(
+      heroTag: "${CocktailCard.heroPrefix}${cocktail.id}",
       appBarText: cocktail.name,
       imageUrl: cocktail.imageUrl,
       child: Column(

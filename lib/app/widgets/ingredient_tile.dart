@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 /// Карточка, которая отображает имя ингредиента и его картинку.
 class IngredientTile extends StatelessWidget {
+  static const heroPrefix = "ingredient-";
   final Ingredient ingredient;
 
   const IngredientTile({Key? key, required this.ingredient}) : super(key: key);
@@ -18,24 +19,27 @@ class IngredientTile extends StatelessWidget {
 
     return Row(
       children: [
-        AspectRatio(
-          aspectRatio: 1,
-          child: ClipRRect(
-            borderRadius: AppRadius.standard,
-            child: GestureDetector(
-              onTap: () {
-                context.router.pushNamed(
-                  "${context.router.currentUrl}/${ingredient.id}",
-                );
-              },
-              child: Image.network(
-                ingredient.imageUrl,
-                fit: BoxFit.cover,
-                loadingBuilder: (_, child, event) {
-                  if (event == null) return child;
-                  return const ThemeShimmer();
-                },
-                errorBuilder: (_, __, ___) => const ThemeShimmer(),
+        GestureDetector(
+          onTap: () {
+            context.router.pushNamed(
+              "${context.router.currentUrl}/${ingredient.id}",
+            );
+          },
+          child: Hero(
+            tag: "$heroPrefix${ingredient.id}",
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: ClipRRect(
+                borderRadius: AppRadius.standard,
+                child: Image.network(
+                  ingredient.imageUrl,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (_, child, event) {
+                    if (event == null) return child;
+                    return const ThemeShimmer();
+                  },
+                  errorBuilder: (_, __, ___) => const ThemeShimmer(),
+                ),
               ),
             ),
           ),

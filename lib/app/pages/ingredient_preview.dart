@@ -4,6 +4,7 @@ import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/di.dart';
 import 'package:cocktail_gen/app/navigation/router.dart';
 import 'package:cocktail_gen/app/widgets/additional_layout_info.dart';
+import 'package:cocktail_gen/app/widgets/ingredient_tile.dart';
 import 'package:cocktail_gen/interfaces/db_repository.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,7 @@ class IngredientPreviewPage extends StatelessWidget {
     return AdditionalLayoutInfo(
       appBarText: ingredient.name,
       imageUrl: ingredient.imageUrl,
+      heroTag: "${IngredientTile.heroPrefix}${ingredient.id}",
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPaddings.veryLarge),
         child: Column(

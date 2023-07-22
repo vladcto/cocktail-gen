@@ -14,7 +14,7 @@ class GptClient {
     final openAi = OpenAI.instance.build(
       token: token,
       baseOption: HttpSetup(
-        receiveTimeout: const Duration(seconds: 20),
+        receiveTimeout: const Duration(seconds: 8),
       ),
       enableLog: true,
     );
