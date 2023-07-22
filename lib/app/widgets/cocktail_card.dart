@@ -3,6 +3,7 @@ import 'package:cocktail_gen/app/constants/app_font_size.dart';
 import 'package:cocktail_gen/app/constants/app_paddings.dart';
 import 'package:cocktail_gen/app/constants/app_radius.dart';
 import 'package:cocktail_gen/app/widgets/tag_chip.dart';
+import 'package:cocktail_gen/app/widgets/theme_shimmer.dart';
 import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 ///
 /// Отображает картинку, имя, 4 ингредиента и список тегов.
 class CocktailCard extends StatelessWidget {
+  static const heroPrefix = "cocktail-";
   final Cocktail cocktail;
   const CocktailCard({Key? key, required this.cocktail}) : super(key: key);
 
@@ -35,13 +37,21 @@ class CocktailCard extends StatelessWidget {
                 child: Row(
                   children: [
                     // Картинка рецепта.
-                    AspectRatio(
-                      aspectRatio: 1,
-                      child: ClipRRect(
-                        borderRadius: AppRadius.large,
-                        child: Image.network(
-                          cocktail.imageUrl,
-                          fit: BoxFit.cover,
+                    Hero(
+                      tag: "$heroPrefix${cocktail.id}",
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: ClipRRect(
+                          borderRadius: AppRadius.large,
+                          child: Image.network(
+                            cocktail.imageUrl,
+                            fit: BoxFit.cover,
+                            loadingBuilder: (_, child, event) {
+                              if (event == null) return child;
+                              return const ThemeShimmer();
+                            },
+                            errorBuilder: (_, __, ___) => const ThemeShimmer(),
+                          ),
                         ),
                       ),
                     ),

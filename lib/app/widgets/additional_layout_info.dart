@@ -1,4 +1,5 @@
 import 'package:cocktail_gen/app/widgets/sub_route_app_bar.dart';
+import 'package:cocktail_gen/app/widgets/theme_shimmer.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/app_radius.dart';
@@ -7,7 +8,7 @@ import '../constants/app_radius.dart';
 /// Отображает изображение [imageUrl] и прокручивающийся виджет [child].
 class AdditionalLayoutInfo extends StatelessWidget {
   static const double imagePadding = 32;
-
+  final String? heroTag;
   final String appBarText;
   final String imageUrl;
   final Widget child;
@@ -17,12 +18,23 @@ class AdditionalLayoutInfo extends StatelessWidget {
     required this.appBarText,
     required this.imageUrl,
     required this.child,
+    this.heroTag,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final colorScheme = Theme.of(context).colorScheme;
+
+    final image = Image.network(
+      imageUrl,
+      fit: BoxFit.cover,
+      loadingBuilder: (_, child, event) {
+        if (event == null) return child;
+        return const ThemeShimmer();
+      },
+      errorBuilder: (_, __, ___) => const ThemeShimmer(),
+    );
 
     return Scaffold(
       appBar: SubRouteAppBar(
@@ -36,10 +48,12 @@ class AdditionalLayoutInfo extends StatelessWidget {
             left: 0,
             right: 0,
             height: screenWidth,
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-            ),
+            child: heroTag != null
+                ? Hero(
+                    tag: heroTag!,
+                    child: image,
+                  )
+                : image,
           ),
           Positioned.fill(
             child: ListView(

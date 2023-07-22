@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:cocktail_gen/app/constants/app_theme.dart';
 import 'package:cocktail_gen/app/di.dart';
 import 'package:cocktail_gen/app/navigation/router.dart';
 import 'package:cocktail_gen/app/provider.dart';

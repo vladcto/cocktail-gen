@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cocktail_gen/data/repos/isar/dto/cocktail_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/ingredient_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/tag_isar.dart';
-import 'package:cocktail_gen/data/repos/isar/initial_data_repo.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/cocktail_mapper.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/ingredient_mapper.dart.dart';
 import 'package:cocktail_gen/data/repos/isar/mappers/tag_mapper.dart';

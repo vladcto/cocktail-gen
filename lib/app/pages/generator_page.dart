@@ -11,6 +11,8 @@ import 'package:get_it/get_it.dart';
 final _tagsProvider = StateProvider<String>((_) => "");
 final _ingredientsProvider = StateProvider<String>((_) => "");
 
+final _loadingProvider = StateProvider((ref) => false);
+
 @RoutePage()
 class GeneratorPage extends ConsumerWidget {
   const GeneratorPage({Key? key}) : super(key: key);
@@ -18,7 +20,6 @@ class GeneratorPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = context.router;
-    final messenger = ScaffoldMessenger.of(context);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppPaddings.large * 3),
@@ -48,11 +49,14 @@ class GeneratorPage extends ConsumerWidget {
               height: 48,
               child: ElevatedButton(
                 onPressed: () {
+                  if (ref.read(_loadingProvider)) return;
                   final tags = ref.read(_tagsProvider);
                   final ingredients = ref.read(_ingredientsProvider);
-                  _generateRecipe(tags, ingredients, router);
+                  _generateRecipe(tags, ingredients, router, ref);
                 },
-                child: const Text("Придумать"),
+                child: ref.watch(_loadingProvider)
+                    ? const CircularProgressIndicator()
+                    : const Text("Придумать"),
               ),
             ),
           ],
@@ -61,34 +65,26 @@ class GeneratorPage extends ConsumerWidget {
     );
   }
 
-  Future<Object?>? _generateRecipe(
+  Future<void> _generateRecipe(
     String tags,
     String ingredients,
     StackRouter router,
-  ) {
-    return runZonedGuarded(
-      () => GetIt.I<GptClient>()
-          .generateRecipe(
-            tags,
-            ingredients,
-          )
-          .then(
-            (e) => router.pushWidget(
-              GeneratedCocktailPreview(cocktail: e),
-            ),
+    WidgetRef ref,
+  ) async {
+    ref.read(_loadingProvider.notifier).state = true;
+    await GetIt.I<GptClient>()
+        .generateRecipe(
+          tags,
+          ingredients,
+        )
+        .then(
+          (e) => router.pushWidget(
+            GeneratedCocktailPreview(cocktail: e),
           ),
-      (error, stack) {
-        GetIt.I<GptClient>()
-            .generateRecipe(
-              tags,
-              ingredients,
-            )
-            .then(
-              (e) => router.pushWidget(
-                GeneratedCocktailPreview(cocktail: e),
-              ),
-            );
-      },
-    );
+        )
+        .onError((error, stackTrace) {
+          return null;
+        });
+    ref.read(_loadingProvider.notifier).state = false;
   }
 }
