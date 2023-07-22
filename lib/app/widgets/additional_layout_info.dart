@@ -1,4 +1,5 @@
 import 'package:cocktail_gen/app/widgets/sub_route_app_bar.dart';
+import 'package:cocktail_gen/app/widgets/theme_shimmer.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/app_radius.dart';
@@ -39,6 +40,11 @@ class AdditionalLayoutInfo extends StatelessWidget {
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
+              loadingBuilder: (_, child, event) {
+                if (event == null) return child;
+                return const ThemeShimmer();
+              },
+              errorBuilder: (_, __, ___) => const ThemeShimmer(),
             ),
           ),
           Positioned.fill(
