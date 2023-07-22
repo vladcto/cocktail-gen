@@ -55,8 +55,8 @@ class GeneratorPage extends ConsumerWidget {
                   _generateRecipe(tags, ingredients, router, ref);
                 },
                 child: ref.watch(_loadingProvider)
-                    ? CircularProgressIndicator()
-                    : Text("Придумать"),
+                    ? const CircularProgressIndicator()
+                    : const Text("Придумать"),
               ),
             ),
           ],
@@ -82,7 +82,9 @@ class GeneratorPage extends ConsumerWidget {
             GeneratedCocktailPreview(cocktail: e),
           ),
         )
-        .onError((error, stackTrace) {});
+        .onError((error, stackTrace) {
+          return null;
+        });
     ref.read(_loadingProvider.notifier).state = false;
   }
 }
