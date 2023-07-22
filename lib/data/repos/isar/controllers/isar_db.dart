@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cocktail_gen/data/repos/isar/dto/cocktail_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/ingredient_isar.dart';
 import 'package:cocktail_gen/data/repos/isar/dto/tag_isar.dart';
@@ -9,6 +11,7 @@ import 'package:cocktail_gen/domain/entities/cocktail.dart';
 import 'package:cocktail_gen/domain/entities/ingredient.dart';
 import 'package:cocktail_gen/domain/entities/tag.dart';
 import 'package:cocktail_gen/interfaces/db_repository.dart';
+import 'package:flutter/services.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -57,17 +60,45 @@ class CocktailIsarDb implements RecipeRepository {
     );
 
     final cocktailCount = await isar.cocktailIsars.count();
-    if (cocktailCount == 0) {
-      await isar.writeTxn(
-        () async {
-          await isar.cocktailIsars.putAll(InitialDataRepo.getCocktails());
-          await isar.ingredientIsars.putAll(InitialDataRepo.getIngredients());
-          await isar.tagIsars.putAll(InitialDataRepo.getTags());
-        },
-      );
-    }
+    if (cocktailCount == 0) await _init();
+
     cocktails = await isar.cocktailIsars.where().findAll();
     ingredients = await isar.ingredientIsars.where().findAll();
     tags = await isar.tagIsars.where().findAll();
+  }
+
+  Future<void> _init() async {
+    await isar.writeTxn(
+      () async {
+        final cocktailData =
+            await rootBundle.loadString('assets/isar/CocktailIsar.json');
+        await isar.cocktailIsars.importJson(
+          (jsonDecode(cocktailData) as List<dynamic>)
+              .map(
+                (e) => e as Map<String, dynamic>,
+              )
+              .toList(),
+        );
+
+        final ingredientData =
+            await rootBundle.loadString('assets/isar/IngredientIsar.json');
+        await isar.ingredientIsars.importJson(
+          (jsonDecode(ingredientData) as List<dynamic>)
+              .map(
+                (e) => e as Map<String, dynamic>,
+              )
+              .toList(),
+        );
+
+        final tagData = await rootBundle.loadString('assets/isar/TagIsar.json');
+        await isar.tagIsars.importJson(
+          (jsonDecode(tagData) as List<dynamic>)
+              .map(
+                (e) => e as Map<String, dynamic>,
+              )
+              .toList(),
+        );
+      },
+    );
   }
 }
